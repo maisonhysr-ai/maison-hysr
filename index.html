@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d0e">
+<title>MAISON HYSR | Luxury Fashion</title>
+<meta name="description" content="Discover premium fashion at Maison HYSR. Shop men's wear, women's wear and accessories.">
+
+<style>
+:root {
+  --black:#100d0e;
+  --panel:#1b1517;
+  --burgundy:#531d2b;
+  --gold:#d5b477;
+  --cream:#f4ead9;
+  --muted:#a99b91;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:Georgia,'Times New Roman',serif;
+}
+button,a{font:inherit}
+a{color:inherit;text-decoration:none}
+img{width:100%;display:block;object-fit:cover}
+header{
+  background:#100d0ef5;
+  position:sticky;top:0;z-index:20;
+  border-bottom:1px solid #49343a;
+}
+.nav{
+  max-width:1200px;margin:auto;padding:16px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;
+}
+.logo{color:var(--gold);font-size:23px;letter-spacing:3px;font-weight:bold}
+.navlinks{display:flex;gap:22px;font-family:Arial,sans-serif;font-size:12px}
+.navlinks a:hover{color:var(--gold)}
+.menu-btn{display:none;background:none;color:var(--gold);border:0;font-size:25px}
+.hero{
+  min-height:540px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:65px 20px;
+  background:linear-gradient(#100d0e88,#100d0ee8),
+  url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1500') center/cover;
+}
+.hero-content{max-width:650px}
+.eyebrow{color:var(--gold);letter-spacing:5px;font:11px Arial,sans-serif}
+.hero h1{font-size:clamp(43px,9vw,82px);letter-spacing:5px;margin:20px 0}
+.hero p{color:#ded0c3;line-height:1.8;font-size:15px}
+.gold-btn{
+  display:inline-block;margin-top:28px;
+  background:var(--gold);color:#171010;
+  padding:14px 30px;border:0;cursor:pointer;
+  letter-spacing:2px;font:12px Arial,sans-serif;
+  font-weight:bold;
+}
+.gold-btn:hover{background:#f0d6a5}
+section{padding:70px 5%;scroll-margin-top:75px}
+.section-head{text-align:center;margin-bottom:35px}
+.section-head h2{font-size:32px;letter-spacing:2px}
+.section-head p{color:var(--muted);margin-top:12px;font:12px Arial,sans-serif}
+.categories{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:10px;margin-bottom:30px;
+}
+.filter{
+  background:transparent;color:var(--cream);
+  border:1px solid #66504d;padding:11px 18px;
+  cursor:pointer;font:11px Arial,sans-serif;
+}
+.filter.active,.filter:hover{background:var(--gold);color:#160f10;border-color:var(--gold)}
+.products{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:25px;
+}
+.product{
+  background:var(--panel);border:1px solid #302427;
+  overflow:hidden;transition:.25s;
+}
+.product:hover{transform:translateY(-4px);border-color:var(--gold)}
+.product img{height:300px}
+.product-info{padding:18px}
+.tag{color:var(--gold);font:10px Arial,sans-serif;letter-spacing:2px}
+.product h3{font-size:19px;margin:10px 0}
+.price{color:var(--gold);font-size:19px}
+.old-price{color:#847a75;text-decoration:line-through;font-size:13px;margin-left:8px}
+.product-info p{color:var(--muted);font:12px Arial,sans-serif;margin-top:9px;line-height:1.6}
+.order-btn{
+  width:100%;margin-top:17px;padding:12px;
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);cursor:pointer;font:11px Arial,sans-serif;
+  letter-spacing:2px;
+}
+.order-btn:hover{background:var(--gold);color:#160f10}
+.about{
+  background:linear-gradient(120deg,#32141e,#151012);
+  text-align:center;
+}
+.about-content{max-width:700px;margin:auto}
+.about h2{font-size:35px;color:var(--gold);margin-bottom:20px}
+.about p{line-height:1.9;color:#dfd0c5;font-size:15px}
+.features{
+  max-width:950px;margin:35px auto 0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.feature{border:1px solid #63434a;padding:25px 12px}
+.feature strong{color:var(--gold);font-size:15px}
+.feature p{font:11px Arial,sans-serif;margin-top:10px}
+.contact{text-align:center}
+.contact p{color:var(--muted);margin:15px 0;font:13px Arial,sans-serif}
+footer{
+  border-top:1px solid #453238;text-align:center;
+  padding:35px 15px;color:var(--muted);
+  font:11px Arial,sans-serif;line-height:2;
+}
+footer strong{color:var(--gold);letter-spacing:3px;font:20px Georgia,serif}
+.modal{
+  display:none;position:fixed;inset:0;z-index:50;
+  background:#000c;align-items:center;justify-content:center;
+  padding:15px;
+}
+.modal.show{display:flex}
+.modal-box{
+  width:100%;max-width:420px;max-height:90vh;overflow:auto;
+  background:#211719;border:1px solid var(--gold);padding:25px;
+}
+.modal-box h2{color:var(--gold);margin-bottom:10px}
+.modal-box p{color:var(--muted);font:13px Arial,sans-serif;margin-bottom:18px}
+.modal-box label{display:block;margin:15px 0 7px;font:12px Arial,sans-serif}
+.modal-box select,.modal-box input{
+  width:100%;padding:12px;background:#100d0e;
+  border:1px solid #59444a;color:white;
+}
+.modal-actions{display:flex;gap:10px}
+.modal-actions button{flex:1}
+.close-btn{background:transparent;color:white;border:1px solid #8c7777;padding:12px;cursor:pointer}
+.whatsapp{background:#287d4c;color:white;border:0;padding:12px;cursor:pointer}
+@media(max-width:750px){
+  .products{grid-template-columns:repeat(2,1fr);gap:12px}
+  .product img{height:220px}
+  .product-info{padding:12px}
+  .product h3{font-size:16px}
+  .navlinks{
+    display:none;position:absolute;top:60px;left:0;right:0;
+    background:#171012;padding:22px;flex-direction:column;
+    text-align:center;
+  }
+  .navlinks.open{display:flex}
+  .menu-btn{display:block}
+}
+@media(max-width:420px){
+  .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .product img{height:175px}
+  .product-info h3{font-size:14px}
+  .price{font-size:16px}
+  section{padding:55px 4%}
+  .hero{min-height:440px}
+  .features{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#">MAISON HYSR</a>
+    <div class="navlinks" id="navlinks">
+      <a href="#home">HOME</a>
+      <a href="#shop">SHOP</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">THE ART OF DRESSING WELL</div>
+    <h1>MAISON HYSR</h1>
+    <p>Elegance is not about being noticed. It's about being remembered.</p>
+    <a href="#shop" class="gold-btn">EXPLORE COLLECTION</a>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="section-head">
+    <div class="eyebrow">CURATED FOR YOUR STYLE</div>
+    <h2>THE COLLECTION</h2>
+    <p>Discover your next favourite look.</p>
+  </div>
+
+  <div class="categories">
+    <button class="filter active" onclick="filterProducts('All',this)">ALL</button>
+    <button class="filter" onclick="filterProducts('Men',this)">MEN'S WEAR</button>
+    <button class="filter" onclick="filterProducts('Women',this)">WOMEN'S WEAR</button>
+    <button class="filter" onclick="filterProducts('Accessories',this)">ACCESSORIES</button>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-content">
+    <div class="eyebrow">OUR IDENTITY</div>
+    <h2>ABOUT MAISON HYSR</h2>
+    <p>
+      Maison HYSR is a fashion label built around individuality,
+      confidence and timeless style. We believe fashion should
+      make a statement without saying a word.
+      Discover carefully selected styles and express yourself
+      with Maison HYSR.
+    </p>
+    <div class="features">
+      <div class="feature">
+        <strong>OUR STYLE</strong>
+        <p>Modern and timeless fashion.</p>
+      </div>
+      <div class="feature">
+        <strong>OUR PROMISE</strong>
+        <p>Customer-focused service.</p>
+      </div>
+      <div class="feature">
+        <strong>OUR VISION</strong>
+        <p>Style without boundaries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="eyebrow">WE ARE HERE FOR YOU</div>
+  <div class="section-head">
+    <h2>GET IN TOUCH</h2>
+    <p>Have a question about an order or product?</p>
+  </div>
+  <a class="gold-btn" id="contactWhatsApp" href="#">CHAT ON WHATSAPP</a>
+  <p>Follow our latest collections and updates.</p>
+  <a class="gold-btn" id="instagramLink" href="#" target="_blank">FOLLOW ON INSTAGRAM</a>
+</section>
+</main>
+
+<footer>
+  <strong>MAISON HYSR</strong>
+  <p>YOUR STYLE. YOUR STATEMENT.</p>
+  <p>© <span id="year"></span> Maison HYSR. All rights reserved.</p>
+</footer>
+
+<!-- PRODUCT ORDER WINDOW -->
+<div class="modal" id="orderModal">
+  <div class="modal-box">
+    <h2 id="modalName">Product name</h2>
+    <p id="modalPrice">Product price</p>
+
+    <label for="size">SELECT SIZE</label>
+    <select id="size">
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+      <option value="Free Size">Free Size</option>
+    </select>
+
+    <label for="colour">SELECT COLOUR</label>
+    <select id="colour"></select>
+
+    <label for="quantity">QUANTITY</label>
+    <input type="number" id="quantity" min="1" max="10" value="1">
+
+    <div class="modal-actions" style="margin-top:22px">
+      <button class="whatsapp" onclick="sendOrder()">ORDER ON WHATSAPP</button>
+      <button class="close-btn" onclick="closeModal()">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========================================
+// MAISON HYSR - EDIT YOUR STORE SETTINGS
+// ========================================
+
+// Enter your WhatsApp number with country code.
+// India example: 919876543210
+const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+
+// Enter your Instagram profile URL.
+const INSTAGRAM_URL = "https://www.instagram.com/maison_hysr/";
+
+// ========================================
+// EDIT YOUR PRODUCTS HERE
+// ========================================
+
+const products = [
+  {
+    id:1,
+    name:"Classic Oversized T-Shirt",
+    category:"Men",
+    price:499,
+    oldPrice:999,
+    sizes:["S","M","L","XL","XXL"],
+    colours:["Black","White","Brown"],
+    image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700"
+  },
+  {
+    id:2,
+    name:"Premium Casual Shirt",
+    category:"Men",
+    price:699,
+    oldPrice:1299,
+    sizes:["M","L","XL","XXL"],
+    colours:["Black","Cream","Brown"],
+    image:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=700"
+  },
+  {
+    id:3,
+    name:"Classic Denim Jeans",
+    category:"Men",
+    price:899,
+    oldPrice:1499,
+    sizes:["28","30","32","34","36"],
+    colours:["Black","Blue"],
+    image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=700"
+  },
+  {
+    id:4,
+    name:"Premium Fashion Jacket",
+    category:"Men",
+    price:1499,
+    oldPrice:2499,
+    sizes:["M","L","XL","XXL"],
+    colours:["Black","Brown"],
+    image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=700"
+  },
+  {
+    id:5,
+    name:"Royal Kurta Set",
+    category:"Women",
+    price:999,
+    oldPrice:1499,
+    sizes:["S","M","L","XL","XXL"],
+    colours:["Maroon","Blue","Cream"],
+    image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=700"
+  },
+  {
+    id:6,
+    name:"Elegant Saree",
+    category:"Women",
+    price:899,
+    oldPrice:1499,
+    sizes:["Free Size"],
+    colours:["Blue","Gold","Maroon"],
+    image:"https://images.unsplash.com/photo-1610030469668-8e9f641a6c5b?w=700"
+  },
+  {
+    id:7,
+    name:"Women's Denim Jeans",
+    category:"Women",
+    price:799,
+    oldPrice:1299,
+    sizes:["26","28","30","32","34"],
+    colours:["Black","Blue"],
+    image:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=700"
+  },
+  {
+    id:8,
+    name:"Premium Fashion Belt",
+    category:"Accessories",
+    price:399,
+    oldPrice:699,
+    sizes:["Free Size"],
+    colours:["Black","Brown"],
+    image:"https://images.unsplash.com/photo-1624222247344-550fb8e8d9b0?w=700"
+  },
+  {
+    id:9,
+    name:"Classic Fashion Bag",
+    category:"Accessories",
+    price:599,
+    oldPrice:999,
+    sizes:["Free Size"],
+    colours:["Black","Brown","Cream"],
+    image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700"
+  }
+];
+
+// ========================================
+// WEBSITE FUNCTIONS
+// ========================================
+
+let selectedProduct = null;
+
+function renderProducts(category="All"){
+  const container=document.getElementById("products");
+
+  const filtered=products.filter(p =>
+    category==="All" || p.category===category
+  );
+
+  container.innerHTML=filtered.map(p=>`
+    <article class="product">
+      <img src="${p.image}" alt="${p.name}" loading="lazy">
+      <div class="product-info">
+        <span class="tag">${p.category.toUpperCase()}</span>
+        <h3>${p.name}</h3>
+        <span class="price">₹${p.price}</span>
+        <span class="old-price">₹${p.oldPrice}</span>
+        <p>Premium style. Discover your look with Maison HYSR.</p>
+        <button class="order-btn" onclick="openModal(${p.id})">
+          SELECT & ORDER
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function filterProducts(category,button){
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  renderProducts(category);
+}
+
+function openModal(id){
+  selectedProduct=products.find(p=>p.id===id);
+  if(!selectedProduct)return;
+
+  document.getElementById("modalName").textContent=selectedProduct.name;
+  document.getElementById("modalPrice").textContent="Price: ₹"+selectedProduct.price;
+
+  const size=document.getElementById("size");
+  size.innerHTML=selectedProduct.sizes.map(s=>
+    `<option value="${s}">${s}</option>`
+  ).join("");
+
+  const colour=document.getElementById("colour");
+  colour.innerHTML=selectedProduct.colours.map(c=>
+    `<option value="${c}">${c}</option>`
+  ).join("");
+
+  document.getElementById("quantity").value=1;
+  document.getElementById("orderModal").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("orderModal").classList.remove("show");
+}
+
+function sendOrder(){
+  if(!selectedProduct)return;
+
+  if(!/^91\d{10}$/.test(WHATSAPP_NUMBER)){
+    alert("Please add your correct WhatsApp number in the website settings first.");
+    return;
+  }
+
+  const size=document.getElementById("size").value;
+  const colour=document.getElementById("colour").value;
+  const quantity=Number(document.getElementById("quantity").value);
+
+  if(!Number.isInteger(quantity)||quantity<1||quantity>10){
+    alert("Please select a quantity between 1 and 10.");
+    return;
+  }
+
+  const total=selectedProduct.price*quantity;
+
+  const message=
+`Hello Maison HYSR!
+
+I want to place an order.
+
+Product: ${selectedProduct.name}
+Price: ₹${selectedProduct.price}
+Size: ${size}
+Colour: ${colour}
+Quantity: ${quantity}
+Total: ₹${total}
+
+Please confirm availability and delivery details.
+
+Thank you!`;
+
+  const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
+  window.open(url,"_blank");
+}
+
+function toggleMenu(){
+  document.getElementById("navlinks").classList.toggle("open");
+}
+
+document.querySelectorAll(".navlinks a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    document.getElementById("navlinks").classList.remove("open");
+  });
+});
+
+document.getElementById("contactWhatsApp").href=
+  "https://wa.me/"+WHATSAPP_NUMBER;
+
+document.getElementById("instagramLink").href=INSTAGRAM_URL;
+document.getElementById("year").textContent=new Date().getFullYear();
+
+document.getElementById("orderModal").addEventListener("click",e=>{
+  if(e.target.id==="orderModal")closeModal();
+});
+
+renderProducts();
+</script>
+</body>
+</html>
